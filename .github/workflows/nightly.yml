@@ -1,11 +1,11 @@
 name: Update nightly
 
 # For testing
-on: push
+# on: push
 
-# on:
-#   schedule:
-#     - cron: "0 4 * * *"
+on:
+  schedule:
+    - cron: "0 4 * * *"
 
 jobs:
   run:
