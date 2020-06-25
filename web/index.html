@@ -1,0 +1,83 @@
+<html>
+  <style>
+    html {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
+        "Segoe UI Emoji";
+      background: url("./bg.png");
+    }
+    body {
+      width: 378;
+      height: 100;
+      padding: 0;
+      margin: 0;
+      position: relative;
+    }
+    .row {
+      display: flex;
+      flex-direction: row;
+    }
+
+    #status {
+      position: absolute;
+      right: 0;
+      top: 0;
+      text-align: right;
+    }
+
+    #org-icon {
+      margin-right: 8px;
+    }
+
+    #title {
+      margin-left:32px;
+      margin-top:6px;
+    }
+
+    #content {
+      margin-left:32px;
+      margin-top:6px;
+    }
+
+    #repo-name {
+      color: rgb(3, 102, 214);
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 15px;
+    }
+
+    p,
+    h3 {
+      padding: 0;
+      margin: 0;
+    }
+
+    h3#pr-name {
+      color: rgb(36, 41, 46);
+      font-weight: 600;
+      font-size: 18px;
+      margin-bottom: 2px;
+      margin-top:3px;
+    }
+
+    p#pr-body {
+      width: 280px;
+    }
+  </style>
+  <body>
+    <div>
+      <div id="title" class="row">
+        <img id="org-icon" width="16" height="16" src="https://avatars2.githubusercontent.com/u/17147106?s=200&v=4" />
+        <p id="repo-name">danger/danger-js</p>
+        <p id="status">
+          <svg class="octicon octicon-git-merge merged" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
+            <path fill="rgb(111, 66, 193);" fill-rule="evenodd" d="M5 3.254V3.25v.005a.75.75 0 110-.005v.004zm.45 1.9a2.25 2.25 0 10-1.95.218v5.256a2.25 2.25 0 101.5 0V7.123A5.735 5.735 0 009.25 9h1.378a2.251 2.251 0 100-1.5H9.25a4.25 4.25 0 01-3.8-2.346zM12.75 9a.75.75 0 100-1.5.75.75 0 000 1.5zm-8.5 4.5a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
+          </svg>
+        </p>
+      </div>
+      <div id="content">
+        <h3 id="pr-name">Azure Devops support</h3>
+        <p id="pr-body">some content, sure</p>
+      </div>
+    </div>
+  </body>
+</html>
