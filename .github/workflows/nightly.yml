@@ -8,13 +8,16 @@ on: push
 #     - cron: "0 4 * * *"
 
 jobs:
-  build:
+  run:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@master
       - uses: actions/setup-node@v1
       - run: sudo apt-get install graphicsmagick
+      - run: |
+          git config --global user.email "git@orta.io"
+          git config --global user.name "Orta"
 
       - run: yarn install
       - run: yarn ts-node run.ts
