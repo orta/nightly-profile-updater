@@ -1,4 +1,4 @@
-name: Nightly tasks
+name: Update nightly
 
 # For testing
 on: push
@@ -19,5 +19,7 @@ jobs:
       - run: yarn install
       - run: yarn ts-node run.ts
         env:
+          GITHUB_API_TOKEN: ${{ secrets.GITHUB_API_TOKEN }}
+
 
 
