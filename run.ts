@@ -56,7 +56,7 @@ import { execSync } from "child_process";
       `
       try {
         await page.evaluate(JS);
-        await page.screenshot({ path: `./images/${i}.png`, clip: { x: 0, y: 0, width: 378, height: 130 } });
+        await page.screenshot({ path: `./images/${i}.png`, clip: { x: 0, y: 0, width: 378, height: 100 } });
       } catch (error) {
         console.error(error)
         console.log(JS)
@@ -77,7 +77,7 @@ import { execSync } from "child_process";
   Gm()
   .in("images/*.png")
   .delay(500)
-  .resize(378, 130)
+  .resize(378, 100)
   .write("dd2892cdc1b724f5434cf674fa83f3a8/main.gif", async function(err){
     if (err) throw err;
     console.log("animated.gif created");
