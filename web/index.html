@@ -3,15 +3,16 @@
     html {
       font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji",
         "Segoe UI Emoji";
-      background: url("./bg.png");
+      background: url("./bg.png") no-repeat;
     }
     body {
       width: 378;
-      height: 100;
+      height: 130;
       padding: 0;
       margin: 0;
       position: relative;
     }
+
     .row {
       display: flex;
       flex-direction: row;
@@ -19,7 +20,7 @@
 
     #status {
       position: absolute;
-      right: 0;
+      right: 8px;
       top: 0;
       text-align: right;
     }
@@ -30,12 +31,12 @@
 
     #title {
       margin-left:32px;
-      margin-top:6px;
+      margin-top:7px;
     }
 
     #content {
       margin-left:32px;
-      margin-top:6px;
+      margin-top:7px;
     }
 
     #repo-name {
@@ -62,7 +63,38 @@
     p#pr-body {
       width: 280px;
     }
+
+    #indicators {
+      display: flex;
+      flex-direction: column;
+      position: absolute;
+      top: 24px;
+      left: 12px;
+    }
+    .indicator {
+      background-color: #E1E4E8;
+      width: 5px;
+      height: 5px;
+      margin-top: 8px;
+    }
+    .active {
+      background-color:  #42C463;
+    }
   </style>
+  <script>
+    function setIndex(i, max) {
+      const indicators = document.getElementById("indicators")
+      while (indicators.firstChild) { indicators.removeChild(indicators.firstChild) }
+
+      for (let index = 0; index < max; index++) {
+        const indicatorDiv = document.createElement("div")
+        indicatorDiv.classList.add("indicator")
+        if (i === index) indicatorDiv.classList.add("active")
+        indicators.appendChild(indicatorDiv)
+      }
+    }
+  </script>
+  </script>
   <body>
     <div>
       <div id="title" class="row">
@@ -70,13 +102,17 @@
         <p id="repo-name">danger/danger-js</p>
         <p id="status">
           <svg class="octicon octicon-git-merge merged" viewBox="0 0 16 16" version="1.1" width="16" height="16" aria-hidden="true">
-            <path fill="rgb(111, 66, 193);" fill-rule="evenodd" d="M5 3.254V3.25v.005a.75.75 0 110-.005v.004zm.45 1.9a2.25 2.25 0 10-1.95.218v5.256a2.25 2.25 0 101.5 0V7.123A5.735 5.735 0 009.25 9h1.378a2.251 2.251 0 100-1.5H9.25a4.25 4.25 0 01-3.8-2.346zM12.75 9a.75.75 0 100-1.5.75.75 0 000 1.5zm-8.5 4.5a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
+            <path fill="#6F42C1" fill-rule="evenodd" d="M5 3.254V3.25v.005a.75.75 0 110-.005v.004zm.45 1.9a2.25 2.25 0 10-1.95.218v5.256a2.25 2.25 0 101.5 0V7.123A5.735 5.735 0 009.25 9h1.378a2.251 2.251 0 100-1.5H9.25a4.25 4.25 0 01-3.8-2.346zM12.75 9a.75.75 0 100-1.5.75.75 0 000 1.5zm-8.5 4.5a.75.75 0 100-1.5.75.75 0 000 1.5z"></path>
           </svg>
         </p>
       </div>
       <div id="content">
         <h3 id="pr-name">Azure Devops support</h3>
         <p id="pr-body">some content, sure</p>
+      </div>
+      <div id="indicators">
+        <div class="active indicator"></div>
+        <div class="indicator"></div>
       </div>
     </div>
   </body>

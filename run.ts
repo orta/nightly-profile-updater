@@ -51,14 +51,20 @@ import { execSync } from "child_process";
       document.getElementById("org-icon").src = '${pr.repository.owner.avatarUrl}'
       document.getElementById("repo-name").innerText = '${pr.repository.owner.login}/${pr.repository.name}'
       document.getElementById("pr-name").innerText = '${pr.title}'
-      document.getElementById("pr-body").innerHTML = '${pr.bodyHTML}'
+      document.getElementById("pr-body").innerHTML = \`${pr.bodyHTML.replace(/`/g, "'")}\`
+      setIndex(${i}, ${prs.length})
       `
-      await page.evaluate(JS);
-    
-      await page.screenshot({ path: `./images/${i}.png`, clip: { x: 0, y: 0, width: 378, height: 100 } });
+      try {
+        await page.evaluate(JS);
+        await page.screenshot({ path: `./images/${i}.png`, clip: { x: 0, y: 0, width: 378, height: 130 } });
+      } catch (error) {
+        console.error(error)
+        console.log(JS)
+        await browser.close();
+      }
     }
     console.log("made screenshots")
-  await browser.close();
+    await browser.close();
 
   if (existsSync("dd2892cdc1b724f5434cf674fa83f3a8")) {
     execSync("rm -rf dd2892cdc1b724f5434cf674fa83f3a8")
@@ -71,7 +77,7 @@ import { execSync } from "child_process";
   Gm()
   .in("images/*.png")
   .delay(500)
-  .resize(378, 100)
+  .resize(378, 130)
   .write("dd2892cdc1b724f5434cf674fa83f3a8/main.gif", async function(err){
     if (err) throw err;
     console.log("animated.gif created");
