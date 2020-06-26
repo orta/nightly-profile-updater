@@ -52,6 +52,8 @@ import { execSync } from "child_process";
       document.getElementById("repo-name").innerText = '${pr.repository.owner.login}/${pr.repository.name}'
       document.getElementById("pr-name").innerText = '${pr.title}'
       document.getElementById("pr-body").innerHTML = \`${pr.bodyHTML.replace(/`/g, "'")}\`
+      document.getElementById("status").style.display = \`${pr.state === "MERGED" ? "block" : "none"}\`
+
       setIndex(${i}, ${prs.length})
       `
       try {
@@ -76,7 +78,7 @@ import { execSync } from "child_process";
   const Gm = require("gm");
   Gm()
   .in("images/*.png")
-  .delay(500)
+  .delay(400)
   .resize(378, 100)
   .write("dd2892cdc1b724f5434cf674fa83f3a8/main.gif", async function(err){
     if (err) throw err;
@@ -86,8 +88,8 @@ import { execSync } from "child_process";
     execSync("git add .", { cwd: "dd2892cdc1b724f5434cf674fa83f3a8"  })
     execSync("git commit -m 'update'", { cwd: "dd2892cdc1b724f5434cf674fa83f3a8"  })
     execSync("git push", { cwd: "dd2892cdc1b724f5434cf674fa83f3a8"  })
+    
     console.log("done")
-
   })
 })();
 
