@@ -50,7 +50,7 @@ import { execSync } from "child_process";
       const JS = `
       document.getElementById("org-icon").src = '${pr.repository.owner.avatarUrl}'
       document.getElementById("repo-name").innerText = '${pr.repository.owner.login}/${pr.repository.name}'
-      document.getElementById("pr-name").innerText = '${pr.title}'
+      document.getElementById("pr-name").innerText = \`${pr.title.replace(/`/g, "'")}\`
       document.getElementById("pr-body").innerHTML = \`${pr.bodyHTML.replace(/`/g, "'")}\`
       document.getElementById("status").style.display = \`${pr.state === "MERGED" ? "block" : "none"}\`
 
