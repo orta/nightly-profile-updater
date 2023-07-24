@@ -1,8 +1,9 @@
 const { join } = require("path");
 import { graphql } from "@octokit/graphql";
-import * as playwright from 'playwright'
+import * as playwright from 'playwright';
 import { existsSync } from "fs";
 import { execSync } from "child_process";
+
 
 (async () => {
 
